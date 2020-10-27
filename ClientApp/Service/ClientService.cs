@@ -13,11 +13,11 @@ namespace ClientApp.Service
     public  class ClientService
     {
         
-        public ClientDTO GetAllDetail()
+        public List<ClientDTO> GetAllDetail(int idRole)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(PropertiesFile.HOST+ "Server/api/Client/GetDetail/2");
+                client.BaseAddress = new Uri(PropertiesFile.HOST+ "Server/api/Client/GetListClientByRole/"+ idRole);
 
                 var responseTask = client.GetAsync(client.BaseAddress);
                 responseTask.Wait();
@@ -26,7 +26,7 @@ namespace ClientApp.Service
                 if (result.IsSuccessStatusCode)
                 {
 
-                    var readTask = JsonConvert.DeserializeObject<ClientDTO>(result.Content.ReadAsStringAsync().Result);
+                    var readTask = JsonConvert.DeserializeObject<List<ClientDTO>>(result.Content.ReadAsStringAsync().Result);
                     return readTask; // nếu return ngay đây sao k return lại method trên luôn
                 }
                 return null;

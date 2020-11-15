@@ -7,7 +7,7 @@ namespace ClientApp.Models
 {
     public class Role
     {
-        public int idRole { get;set;}
+        public long idRole { get;set;}
         public string rolename { get;set;}
     }
 }

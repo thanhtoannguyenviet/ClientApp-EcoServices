@@ -7,7 +7,7 @@ namespace ClientApp.Models.DTO
 {
     public class Img
     {
-        public int idImg { get;set;}
+        public long idImg { get;set;}
 
         public string link { get; set; }
         public int? idtable { get; set; }

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ClientApp.Models.Service>
+
+@{
+    ViewBag.Title = "Service";
+}
+
+<h2>Service</h2>
+
+<p>
+    @Html.ActionLink("Create New", "NewService")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idService)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nameservice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actived)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idService)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameservice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actived)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", item) |
+            @Html.ActionLink("Details", "Details", item) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

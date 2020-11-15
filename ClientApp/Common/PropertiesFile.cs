@@ -7,6 +7,8 @@ namespace ClientApp.Common
 {
     public static class PropertiesFile
     {
-        public static string HOST = "http://115.73.214.162:7777/";
+        //public static string HOST = "http://localhost:8080/Server/api/";
+        public static string HOST = "http://115.73.214.162:7777/Server/api/";
+
     }
 }

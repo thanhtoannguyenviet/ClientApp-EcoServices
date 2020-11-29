@@ -18,7 +18,7 @@ namespace ClientApp.Controllers
         public ActionResult Service()
         {
             JobService jobS = new JobService();
-            List<Models.Service> ls = jobS.GetAllByClient(0);
+            var ls = jobS.GetAllByClient(0);
             return View(ls);
         }
         public ActionResult NewService()

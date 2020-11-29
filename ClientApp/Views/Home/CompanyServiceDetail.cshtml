@@ -1,0 +1,82 @@
+﻿@model ClientApp.Models.CompanyService
+
+@{
+    ViewBag.Title = "CompanyServiceDetail";
+}
+
+<h2>CompanyServiceDetail</h2>
+
+<div>
+    <h4>CompanyService</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idCs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idCs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameCos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameCos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

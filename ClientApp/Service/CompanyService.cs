@@ -36,9 +36,7 @@ namespace ClientApp.Service
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-
-
-                    return result.Content.ReadAsStringAsync().Result; // nếu return ngay đây sao k return lại method trên luôn
+                    return result.Content.ReadAsStringAsync().Result;
                 }
 
                 return null;
@@ -71,7 +69,26 @@ namespace ClientApp.Service
                 {
 
                     var readTask = JsonConvert.DeserializeObject<List<Models.CompanyService>>(result.Content.ReadAsStringAsync().Result);
-                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
+                    return readTask;
+                }
+                return null;
+            }
+        }
+        public Models.CompanyService GetDetail(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(PropertiesFile.HOST + "CompanyService/GetDetail/" + id);
+
+                var responseTask = client.GetAsync(client.BaseAddress);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    var readTask = JsonConvert.DeserializeObject< Models.CompanyService > (result.Content.ReadAsStringAsync().Result);
+                    return readTask;
                 }
                 return null;
             }

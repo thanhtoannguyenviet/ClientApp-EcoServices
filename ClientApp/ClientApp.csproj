@@ -121,6 +121,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\PropertiesFile.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,7 +134,7 @@
     <Compile Include="Models\DTO\DetailOrderDTO.cs" />
     <Compile Include="Models\DTO\FeedBackDTO.cs" />
     <Compile Include="Models\DTO\OrderDTO.cs" />
-    <Compile Include="Models\DTO\Service.cs" />
+    <Compile Include="Models\DTO\ServiceDTO.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Img.cs" />
     <Compile Include="Models\Order.cs" />
@@ -300,9 +301,12 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Service\Service.cshtml" />
     <Content Include="Views\Service\NewService.cshtml" />
+    <Content Include="Views\Home\CompanyServiceDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="resource\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

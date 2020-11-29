@@ -12,7 +12,9 @@ namespace ClientApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+          var jobService = new JobService();
+          List<Models.DTO.ServiceDTO> services = jobService.GetAllByClient(0);
+            return View(services);
         }
 
         public ActionResult About()
@@ -30,7 +32,7 @@ namespace ClientApp.Controllers
         }
         public ActionResult Login()
         {
-            return PartialView("Login");
+            return View("Login");
         }
         [HttpPost]
         public ActionResult Login(Client account)
@@ -72,28 +74,18 @@ namespace ClientApp.Controllers
             return View("Index");
         }
         [HttpPost]
-        public ActionResult Register()
+        public ActionResult Register(Client client)
         {
-            //var accountCus = new AccountCustomer();
-            //accountCus.customer.headName = Request["Fullname"].Trim();
-            //accountCus.customer.headEmail = Request["Email"].Trim();
-            //accountCus.account.pass_word = EnCrypt(Request["Password"]);
-            //accountCus.customer.headPhone = Request["Phone"].Trim();
-            //accountCus.account.userName = Request["Username"].Trim();
-            ////accountCus.customer.headBirtday =DateTime.Parse( Request["Birthday"]);
-            //accountCus.customer.taxCode = Request["taxCode"];
-            //accountCus.account.role_ = 1;
-            //var done = RegisterCustomer(accountCus);
-            //if (done != null)
-            //{
-            //    Session["Account"] = done;
-            //    ViewBag.Name = done.customer.headName;
-            //    var username = Common.Role.GetValue(done.account.role_);
-            //    FormsAuthentication.SetAuthCookie(Common.Role.GetValue(done.account.role_), true);
-            //    return Redirect("/Customer/");
-            //}
-            ////Chua tra ve loi khong dang ky duoc
-            //else return Redirect("/Home/");
+            var clientService = new ClientService();
+            var cl = clientService.Post(client);
+            if (cl != null)
+            {
+                Session["Account"] = cl;
+                ViewBag.Name = cl.fullname;
+                //var username = Common.Role.GetValue(done.account.role_);
+                //FormsAuthentication.SetAuthCookie(Common.Role.GetValue(done.account.role_), true);
+                return Redirect("/Customer/");
+            }
             return View();
         }
 
@@ -116,6 +108,13 @@ namespace ClientApp.Controllers
         public ActionResult _PartialLogin()
         {
             return PartialView("../Share/_PartialLogin");
+        }
+        [HttpGet]
+        public ActionResult CompanyServiceDetail(int id)
+        {
+            var companyService = new Service.CompanyService();
+            var cl = companyService.GetDetail(id);
+            return View(cl);
         }
     }
 }

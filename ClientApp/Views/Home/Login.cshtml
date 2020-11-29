@@ -1,51 +1,85 @@
 ﻿@model ClientApp.Models.Client
 
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-
-                <from id="login" class="input-group">
-                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-field", @placeholder = "User Id" } })
-                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.username)
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-field", @placeholder = "User name" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password)
+                <div class="col-sm-10">
                     @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "input-field", @placeholder = "Password" } })
                     @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                    <p>
-                        <input type="checkbox" class="chech-box"><span>Remember Password</span>
-                    </p>
-                    @*<input type="checkbox" class="chech-box"><span>Remember Password</span>*@
-                    <button type="submit" class="submit-btn">Log In</button>
-                </from>
+                </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class="form-check-input" id="check_button">
+<label class="form-check-label" for="check_button">Remember Password</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+                }
+            </div>
+    <div class="col">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-            }
-
-            @using (Html.BeginForm("Register", "Home", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-
-        <from id="register" class="input-group">
-            @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "input-field", @placeholder = "First Name" } })
-            @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
-
-            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input-field", @placeholder = "Email" } })
-            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-
-            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-field", @placeholder = "Username" } })
-            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-
-            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "input-field", @placeholder = "Password" } })
-            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-
-            @Html.EditorFor(model => model.confilmpassword, new { htmlAttributes = new { @class = "input-field", @placeholder = "Confilm Password" } })
-            @Html.ValidationMessageFor(model => model.confilmpassword, "", new { @class = "text-danger" })
-
-            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "input-field", @placeholder = "Phone Number" } })
-            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-
-            <input type="checkbox" class="chech-box"><span>I agree to the teems & conditions</span>
-            @*<input type="checkbox" class="chech-box"><span>Remember Password</span>*@
-            <button type="submit" class="submit-btn">Registe</button>
-
-        </from>
-
-            }
+        <div class="form-group">
+            @Html.LabelFor(model => model.fullname)
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "input-field", @placeholder = "First Name" } })
+                @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.email)
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input-field", @placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.username)
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-field", @placeholder = "Username" } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.password)
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "input-field", @placeholder = "Password" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.confilmpassword)
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.confilmpassword, new { htmlAttributes = new { @class = "input-field", @placeholder = "Confilm Password" } })
+                            @Html.ValidationMessageFor(model => model.confilmpassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.phone)
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "input-field", @placeholder = "Phone Number" } })
+                            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                                <div class="form-group">
+                                    <input type="checkbox" class="chech-box"><span>I agree to the teems & conditions</span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Registe</button>
+                                </div>
+                                }
+                            </div>
+        </div>

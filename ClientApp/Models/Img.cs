@@ -10,8 +10,8 @@ namespace ClientApp.Models.DTO
         public long idImg { get;set;}
 
         public string link { get; set; }
-        public int? idtable { get; set; }
+        public long idtable { get; set; }
         public string table { get; set; }
-        public int? status { get; set; }
+        public string status { get; set; }
     }
 }

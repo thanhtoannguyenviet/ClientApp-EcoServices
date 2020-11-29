@@ -58,7 +58,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public List<Models.Service> GetAllByClient(int page)
+        public List<Models.DTO.ServiceDTO> GetAllByClient(int page)
         {
             using (var client = new HttpClient())
             {
@@ -70,9 +70,8 @@ namespace ClientApp.Service
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-
-                    var readTask = JsonConvert.DeserializeObject<List<Models.Service>>(result.Content.ReadAsStringAsync().Result);
-                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
+                    var rs = JsonConvert.DeserializeObject<List<Models.DTO.ServiceDTO>>(result.Content.ReadAsStringAsync().Result);
+                    return rs;
                 }
                 return null;
             }

@@ -32,6 +32,5 @@ namespace ClientApp.Models
         public int? actived { get; set; }
 
         public int? role_ { get; set; }
-        public string confilmpassword { get; set; }
     }
 }

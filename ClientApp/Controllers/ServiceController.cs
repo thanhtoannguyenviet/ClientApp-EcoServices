@@ -26,7 +26,7 @@ namespace ClientApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult NewService(Models.Service service_)
+        public ActionResult NewService(Models.ServiceEntity service_)
         {
 
             JobService jobS = new JobService();
@@ -38,14 +38,14 @@ namespace ClientApp.Controllers
             ViewBag.message = "Insert failed!";
             return View();
         }
-        public ActionResult Detail(Models.Service service_)
+        public ActionResult Detail(Models.ServiceEntity service_)
         {
            
             return View(service_);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idService,nameservice,description,actived")] Models.Service service_)
+        public ActionResult Edit([Bind(Include = "idService,nameservice,description,actived")] Models.ServiceEntity service_)
         {
 
             if (ModelState.IsValid)

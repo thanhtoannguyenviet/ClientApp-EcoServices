@@ -7,7 +7,7 @@ namespace ClientApp.Models.DTO
 {
     public class FeedBackDTO
     {
-        Feedback feedBack { get;set;}
-        Client client { get;set;}
+        FeedbackEntity feedBack { get;set;}
+        ClientEntity client { get;set;}
     }
 }

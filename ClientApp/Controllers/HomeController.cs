@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CompanyServiceEntity = ClientApp.Models.CompanyServiceEntity;
 
 namespace ClientApp.Controllers
 {
@@ -35,7 +36,7 @@ namespace ClientApp.Controllers
             return View("Login");
         }
         [HttpPost]
-        public ActionResult Login(Client account)
+        public ActionResult Login(ClientEntity account)
         {
            
             ClientService clientServer = new ClientService();
@@ -74,7 +75,7 @@ namespace ClientApp.Controllers
             return View("Index");
         }
         [HttpPost]
-        public ActionResult Register(Client client)
+        public ActionResult Register(ClientEntity client)
         {
             var clientService = new ClientService();
             var cl = clientService.Post(client);
@@ -116,5 +117,11 @@ namespace ClientApp.Controllers
             var cl = companyService.GetDetail(id);
             return View(cl);
         }
+
+        public ActionResult AddToCart(CompanyServiceEntity cs)
+        {
+            return View(cs);
+        }
+
     }
 }

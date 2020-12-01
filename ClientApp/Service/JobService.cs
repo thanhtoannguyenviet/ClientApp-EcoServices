@@ -14,7 +14,7 @@ namespace ClientApp.Service
 {
     public class JobService
     {
-        public Models.Service Post(Models.Service ser)
+        public ServiceEntity Post(ServiceEntity ser)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -46,7 +46,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public Models.Service UpdateStatus(Models.Service ser)
+        public ServiceEntity UpdateStatus(ServiceEntity ser)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -76,7 +76,7 @@ namespace ClientApp.Service
                 return null;
             }
         }
-        public List<Models.Service> GetAllByAdmin(int page)
+        public List<ServiceEntity> GetAllByAdmin(int page)
         {
             using (var client = new HttpClient())
             {
@@ -89,7 +89,7 @@ namespace ClientApp.Service
                 if (result.IsSuccessStatusCode)
                 {
 
-                    var readTask = JsonConvert.DeserializeObject<List<Models.Service>>(result.Content.ReadAsStringAsync().Result);
+                    var readTask = JsonConvert.DeserializeObject<List<ServiceEntity>>(result.Content.ReadAsStringAsync().Result);
                     return readTask; // nếu return ngay đây sao k return lại method trên luôn
                 }
                 return null;

@@ -14,27 +14,27 @@ namespace ClientApp.Service
 {
     public class FeedBackService
     {
-        public Feedback Post(Feedback cl)
+        public FeedbackEntity Post(FeedbackEntity feedbackEntity)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Post/", new StringContent(
-                    new JavaScriptSerializer().Serialize(cl), Encoding.UTF8, "application/json")).Result;
+                    new JavaScriptSerializer().Serialize(feedbackEntity), Encoding.UTF8, "application/json")).Result;
                 if (response.StatusCode == HttpStatusCode.OK)
-                    return cl;
+                    return feedbackEntity;
             }
             return null;
         }
-        public Feedback Put(Feedback fb)
+        public FeedbackEntity Put(FeedbackEntity feedbackEntity)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Put/", new StringContent(
-                    new JavaScriptSerializer().Serialize(fb), Encoding.UTF8, "application/json")).Result;
+                    new JavaScriptSerializer().Serialize(feedbackEntity), Encoding.UTF8, "application/json")).Result;
                 if (response.StatusCode == HttpStatusCode.OK)
-                    return fb;
+                    return feedbackEntity;
             }
             return null;
         }
@@ -49,16 +49,14 @@ namespace ClientApp.Service
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-
-
-                    return result.Content.ReadAsStringAsync().Result; // nếu return ngay đây sao k return lại method trên luôn
+                    return result.Content.ReadAsStringAsync().Result; 
                 }
 
                 return null;
             }
             return null;
         }
-        public Feedback GetDetail(int id)
+        public FeedbackEntity GetDetail(int id)
         {
             using (var client = new HttpClient())
             {
@@ -70,7 +68,7 @@ namespace ClientApp.Service
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return JsonConvert.DeserializeObject<Feedback>(result.Content.ReadAsStringAsync().Result);
+                    return JsonConvert.DeserializeObject<FeedbackEntity>(result.Content.ReadAsStringAsync().Result);
                 }
                 return null;
             }

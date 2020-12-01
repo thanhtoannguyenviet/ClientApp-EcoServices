@@ -7,9 +7,9 @@ namespace ClientApp.Models.DTO
 {
     public class ServiceDTO
     {
-        public Models.Service serviceEntity { get;set;}
-        public Client clientEntity { get;set;}
-        public List<CompanyService> companyServiceEntity { get;set;}
-        public Img imgEntity { get;set;}
+        public ServiceEntity serviceEntity { get;set;}
+        public ClientEntity clientEntity { get;set;}
+        public List<CompanyServiceEntity> companyServiceEntity { get;set;}
+        public ImgEntity imgEntity { get;set;}
     }
 }

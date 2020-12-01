@@ -15,7 +15,7 @@ namespace ClientApp.Service
 {
     public class ClientService
     {
-        public Client Post (Client cl)
+        public ClientEntity Post (ClientEntity cl)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -27,7 +27,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public Client Put(Client cl)
+        public ClientEntity Put(ClientEntity cl)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -130,7 +130,7 @@ namespace ClientApp.Service
                 return null;
             }
         }
-        public Client ForgotPassword(Client cl,String secret_key)
+        public ClientEntity ForgotPassword(ClientEntity cl,String secret_key)
         {
             using (HttpClient client = new HttpClient())
             {

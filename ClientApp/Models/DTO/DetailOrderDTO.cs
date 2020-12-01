@@ -7,7 +7,7 @@ namespace ClientApp.Models.DTO
 {
     public class DetailOrderDTO
     {
-        DetailOrder detailOrder { get;set;}
-        Order order { get;set;}
+        DetailOrderEntity detailOrder { get;set;}
+        OrderEntity order { get;set;}
     }
 }

@@ -20,7 +20,7 @@ namespace ClientApp.Controllers
         {
             var clientService = new ClientService();
             var res = clientService.GetAllDetail(2);
-            List<Client> lsClient = new List<Client>();
+            List<ClientEntity> lsClient = new List<ClientEntity>();
             foreach (var item in res)
             {
                 lsClient.Add(item.clientEntity);

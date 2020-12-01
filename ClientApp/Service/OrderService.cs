@@ -15,7 +15,7 @@ namespace ClientApp.Service
 {
     public class OrderService
     {
-        public Order Post(Order or)
+        public OrderEntity Post(OrderEntity or)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -27,7 +27,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public Order Put(Order or)
+        public OrderEntity Put(OrderEntity or)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -59,7 +59,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public Order GetDetail(int id)
+        public OrderEntity GetDetail(int id)
         {
             using (var client = new HttpClient())
             {
@@ -71,7 +71,7 @@ namespace ClientApp.Service
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return JsonConvert.DeserializeObject<Order>(result.Content.ReadAsStringAsync().Result);
+                    return JsonConvert.DeserializeObject<OrderEntity>(result.Content.ReadAsStringAsync().Result);
                 }
                 return null;
             }

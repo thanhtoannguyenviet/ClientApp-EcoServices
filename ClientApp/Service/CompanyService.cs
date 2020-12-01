@@ -8,12 +8,13 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
+using ClientApp.Models;
 
 namespace ClientApp.Service
 {
     public class CompanyService
     {
-        public CompanyService Post(CompanyService cs)
+        public CompanyServiceEntity Post(CompanyServiceEntity cs)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -43,7 +44,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public Models.CompanyService UpdateStatus(Models.CompanyService cs)
+        public CompanyServiceEntity UpdateStatus(CompanyServiceEntity cs)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -55,7 +56,7 @@ namespace ClientApp.Service
             }
             return null;
         }
-        public List<Models.CompanyService> GetAllByClient(int page)
+        public List<CompanyServiceEntity> GetAllByClient(int page)
         {
             using (var client = new HttpClient())
             {
@@ -68,13 +69,13 @@ namespace ClientApp.Service
                 if (result.IsSuccessStatusCode)
                 {
 
-                    var readTask = JsonConvert.DeserializeObject<List<Models.CompanyService>>(result.Content.ReadAsStringAsync().Result);
+                    var readTask = JsonConvert.DeserializeObject<List<CompanyServiceEntity>>(result.Content.ReadAsStringAsync().Result);
                     return readTask;
                 }
                 return null;
             }
         }
-        public Models.CompanyService GetDetail(int id)
+        public CompanyServiceEntity GetDetail(int id)
         {
             using (var client = new HttpClient())
             {
@@ -87,7 +88,7 @@ namespace ClientApp.Service
                 if (result.IsSuccessStatusCode)
                 {
 
-                    var readTask = JsonConvert.DeserializeObject< Models.CompanyService > (result.Content.ReadAsStringAsync().Result);
+                    var readTask = JsonConvert.DeserializeObject<CompanyServiceEntity > (result.Content.ReadAsStringAsync().Result);
                     return readTask;
                 }
                 return null;

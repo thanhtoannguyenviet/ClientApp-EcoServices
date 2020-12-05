@@ -136,7 +136,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\PropertiesFile.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -323,7 +322,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="resource\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,9 +9,9 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark border-bottom border-primary">
-        <a class="navbar-brand" href="#"><img src="~/resource/logo.PNG" style="height:50px"/></a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+    <nav class="nav">
+        <a class="nav__logo" href="#"><img src="~/resource/logo.PNG" style="height:50px" /></a>
+        @*<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -29,11 +29,21 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline">
-                @Html.ActionLink("Login", "Login", "Home")
-                
-            </form>
-        </div>
+               </div>*@
+        <li class="nav__content">
+            <a class="nav__link" href="#">Home</a>
+        </li>
+        <li class="nav__content">
+            <a class="nav__link" href="#">Home</a>
+        </li>
+        <li class="nav__content">
+            <a class="nav__link" href="#">Home</a>
+        </li>
+        <form class="form-inline">
+            @Html.ActionLink("Login", "Login", "Home")
+
+        </form>
+
     </nav>
     <div class="container body-content">
         @RenderBody()

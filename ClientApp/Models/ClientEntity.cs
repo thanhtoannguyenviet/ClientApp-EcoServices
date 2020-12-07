@@ -31,6 +31,6 @@ namespace ClientApp.Models
 
         public int? actived { get; set; }
 
-        public int? role_ { get; set; }
+        public int? role { get; set; }
     }
 }

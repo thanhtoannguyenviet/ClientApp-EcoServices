@@ -57,7 +57,6 @@ C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.csp
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.csproj.CopyComplete
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.dll
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.pdb
-C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.csprojAssemblyReference.cache
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\BraintreeHttp-Dotnet.dll
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\EntityFramework.dll
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\EntityFramework.SqlServer.dll
@@ -66,3 +65,4 @@ C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\PayPal.WebApi.dll
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\EntityFramework.xml
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\EntityFramework.SqlServer.xml
 C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\bin\PayPal.xml
+C:\Project\csharpspc\DoAnChuyenNganh\ClientApp\ClientApp\obj\Debug\ClientApp.csprojAssemblyReference.cache

@@ -11,6 +11,8 @@
 {
 <div class="card row">
     <div class="card-body">
+        @if(@item.imgEntity.link != null){
+        <img src="@item.imgEntity.link" class="card-img-top" alt="...">}
         <h5 class="card-title">@item.serviceEntity.nameservice</h5>
         <p class="card-text">@item.serviceEntity.description</p>
         <a href="#" class="card-link">Xem thêm</a>
@@ -18,11 +20,10 @@
             @foreach (var i in item.companyServiceEntity)
             {
                 <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">@i.nameCos</h5>
                         <p class="card-text">@i.price</p>
-                        @Html.ActionLink("Chi tiết", "CompanyServiceDetail", "Home", new {  id=i.idCs },null)
+                        @Html.ActionLink("Chi tiết", "CompanyServiceDetail", "Home", new {id = i.idCs}, null)
                         <a href="#" class="btn btn-primary">Xem chi tiết</a>
                     </div>
                 </div>

@@ -290,6 +290,7 @@
     <Content Include="Views\Service\NewService.cshtml" />
     <Content Include="Views\Home\CompanyServiceDetail.cshtml" />
     <Content Include="Views\Home\AddToCart.cshtml" />
+    <Content Include="Views\Service\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

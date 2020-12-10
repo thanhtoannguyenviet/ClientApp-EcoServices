@@ -1,0 +1,56 @@
+﻿@model ClientApp.Models.ServiceEntity
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ServiceEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameservice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameservice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actived)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Delete","Delete",new {id = Model.idService}) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

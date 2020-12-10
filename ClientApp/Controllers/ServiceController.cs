@@ -21,6 +21,12 @@ namespace ClientApp.Controllers
             var ls = jobS.GetAllByClient(0);
             return View(ls);
         }
+        public ActionResult Delete(int id)
+        {
+            JobService jobS = new JobService();
+            jobS.Delete(id);
+            return RedirectToAction("Index");
+        }
         public ActionResult NewService()
         {
             return View();
@@ -38,9 +44,10 @@ namespace ClientApp.Controllers
             ViewBag.message = "Insert failed!";
             return View();
         }
-        public ActionResult Detail(Models.ServiceEntity service_)
+        public ActionResult Detail(int id)
         {
-           
+            JobService jobS = new JobService();
+            var service_ = jobS.GetDetail(id);
             return View(service_);
         }
         [HttpPost]
@@ -56,14 +63,9 @@ namespace ClientApp.Controllers
             }
             return View();
         }
+       
 
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            JobService jobS = new JobService();
-            jobS.Delete(id);
-            return RedirectToAction("Index");
-        }
+      
 
     }
 }

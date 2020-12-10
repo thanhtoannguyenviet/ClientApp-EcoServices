@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ClientApp.Models.ServiceEntity>
+﻿@model IEnumerable<ClientApp.Models.DTO.ServiceDTO>
 
 @{
     ViewBag.Title = "Service";
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idService)
+            @Html.DisplayNameFor(model => model.serviceEntity.idService)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nameservice)
+            @Html.DisplayNameFor(model => model.serviceEntity.nameservice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.description)
+            @Html.DisplayNameFor(model => model.serviceEntity.description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.actived)
+            @Html.DisplayNameFor(model => model.serviceEntity.actived)
         </th>
         <th></th>
     </tr>
@@ -29,21 +29,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.idService)
+            @Html.DisplayFor(modelItem => item.serviceEntity.idService)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.nameservice)
+            @Html.DisplayFor(modelItem => item.serviceEntity.nameservice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.description)
+            @Html.DisplayFor(modelItem => item.serviceEntity.description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.actived)
+            @Html.DisplayFor(modelItem => item.serviceEntity.actived)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", item) |
-            @Html.ActionLink("Details", "Details", item) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Details", "Detail", new { id= item.serviceEntity.idService}) |
+            @Html.ActionLink("Delete", "Delete",item.serviceEntity)
         </td>
     </tr>
 }

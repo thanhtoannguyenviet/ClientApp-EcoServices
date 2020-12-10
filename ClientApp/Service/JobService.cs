@@ -95,5 +95,24 @@ namespace ClientApp.Service
                 return null;
             }
         }
+        public ServiceEntity GetDetail(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(PropertiesFile.HOST + "Service/GetDetail/" + id);
+
+                var responseTask = client.GetAsync(client.BaseAddress);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    var readTask = JsonConvert.DeserializeObject<ServiceEntity>(result.Content.ReadAsStringAsync().Result);
+                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
+                }
+                return null;
+            }
+        }
     }
 }

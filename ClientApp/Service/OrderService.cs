@@ -17,81 +17,29 @@ namespace ClientApp.Service
     {
         public OrderEntity Post(OrderEntity or)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Post/", new StringContent(
-                    new JavaScriptSerializer().Serialize(or), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return or;
-            }
-            return null;
+            var orEntity = GRestfulApi<OrderEntity>.Post(PropertiesFile.HOST + "Feedback/Post/",or);
+            return orEntity;
+           
         }
         public OrderEntity Put(OrderEntity or)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Put/", new StringContent(
-                    new JavaScriptSerializer().Serialize(or), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return or;
-            }
-            return null;
+            var orEntity = GRestfulApi<OrderEntity>.Put(PropertiesFile.HOST + "Feedback/Put/", or);
+            return orEntity;
         }
         public string Delete(int id)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Feedback/Delete/" + id);
-                var responseTask = client.DeleteAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-
-
-                    return result.Content.ReadAsStringAsync().Result; // nếu return ngay đây sao k return lại method trên luôn
-                }
-
-                return null;
-            }
-            return null;
+            var del = GRestfulApi<OrderEntity>.Delete(PropertiesFile.HOST + "Feedback/Delete/"+id);
+            return del;
         }
         public OrderEntity GetDetail(int id)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Order/GetDetail/" + id);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject<OrderEntity>(result.Content.ReadAsStringAsync().Result);
-                }
-                return null;
-            }
+            var order = GRestfulApi<OrderEntity>.Get(PropertiesFile.HOST + "Order/GetDetail/" + id);
+            return order;
         }
         public List<OrderDTO> GetListClientByIdCs(int id)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Order/GetListClientByIdCs/" + id);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject<List<OrderDTO>>(result.Content.ReadAsStringAsync().Result);
-                }
-                return null;
-            }
+            var orderList = GRestfulApi<List<OrderDTO>>.Get(PropertiesFile.HOST + "Order/GetListClientByIdCs/" + id);
+            return orderList;
         }
     }
 }

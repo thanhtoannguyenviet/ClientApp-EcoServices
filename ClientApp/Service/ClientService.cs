@@ -17,130 +17,48 @@ namespace ClientApp.Service
     {
         public ClientEntity Post (ClientEntity cl)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST+ "Client/Post/", new StringContent(
-                    new JavaScriptSerializer().Serialize(cl), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return cl;
-            }
-            return null;
+            var clientEntity = GRestfulApi<ClientEntity>.Post(PropertiesFile.HOST + "Client/Post/", cl);
+            return clientEntity;
         }
         public ClientEntity Put(ClientEntity cl)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Client/Put/", new StringContent(
-                    new JavaScriptSerializer().Serialize(cl), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return cl;
-            }
-            return null;
+            var clientEntity = GRestfulApi<ClientEntity>.Post(PropertiesFile.HOST + "Client/Put/", cl);
+            return clientEntity;
         }
         public string Delete(int id)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Client/Delete/" + id);
-                var responseTask = client.DeleteAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-
-                   
-                    return result.Content.ReadAsStringAsync().Result; // nếu return ngay đây sao k return lại method trên luôn
-                }
-
-                return null;
-            }
-            return null;
+            var clientEntity = GRestfulApi<string>.Delete(PropertiesFile.HOST + "Client/Delete/");
+            return clientEntity;
         }
         public List<ClientDTO> GetDetail(int idRole)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Client/GetDetail/" + idRole);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                      return JsonConvert.DeserializeObject<List<ClientDTO>>(result.Content.ReadAsStringAsync().Result);
-                }
-                return null;
-            }
+            var lsClientDtos = GRestfulApi<List<ClientDTO>>.Get(PropertiesFile.HOST + "Client/GetDetail/" + idRole);
+            return lsClientDtos;
         }
         public List<ClientDTO> GetAllDetail(int idRole)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST+ "Client/GetListClientByRole/"+ idRole);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-
-                    var readTask = JsonConvert.DeserializeObject<List<ClientDTO>>(result.Content.ReadAsStringAsync().Result);
-                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
-                }
-                return null;
-            }
+            var lsClientDtos =
+                GRestfulApi<List<ClientDTO>>.Get(PropertiesFile.HOST + "Client/GetListClientByRole/" + idRole);
+            return lsClientDtos;
         }
         public List<ClientDTO> Search(string searchString)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Client/Search/q=" + searchString);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-
-                    var readTask = JsonConvert.DeserializeObject<List<ClientDTO>>(result.Content.ReadAsStringAsync().Result);
-                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
-                }
-                return null;
-            }
+            var lsClientDtos =
+                GRestfulApi<List<ClientDTO>>.Get(PropertiesFile.HOST + "Client/Search/q=" + searchString);
+            return lsClientDtos;
         }
         public ClientDTO GetClient(String username, String password)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Client/Login/");
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = JsonConvert.DeserializeObject<ClientDTO>(result.Content.ReadAsStringAsync().Result);
-                    return readTask; // nếu return ngay đây sao k return lại method trên luôn
-                }
-                return null;
-            }
+            var client = new ClientDTO {clientEntity = {username = username, password = password}};
+            var clientDto =
+                GRestfulApi<ClientDTO>.Post(PropertiesFile.HOST + "Client/Login/", client);
+            return clientDto;
         }
         public ClientEntity ForgotPassword(ClientEntity cl,String secret_key)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Client/ForgotPassword/secret_key="+ secret_key, new StringContent(
-                    new JavaScriptSerializer().Serialize(cl), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return cl;
-            }
-            return null;
+            var clientDto =
+                GRestfulApi<ClientEntity>.Post("Client/ForgotPassword/secret_key=" + secret_key, cl);
+            return clientDto;
         }
     }
 }

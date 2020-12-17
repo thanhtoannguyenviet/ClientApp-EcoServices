@@ -16,62 +16,24 @@ namespace ClientApp.Service
     {
         public FeedbackEntity Post(FeedbackEntity feedbackEntity)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Post/", new StringContent(
-                    new JavaScriptSerializer().Serialize(feedbackEntity), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return feedbackEntity;
+            var fbEntity = GRestfulApi<FeedbackEntity>.Post(PropertiesFile.HOST + "Feedback/Post/", feedbackEntity);
+            return fbEntity;
             }
-            return null;
-        }
         public FeedbackEntity Put(FeedbackEntity feedbackEntity)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                var response = client.PostAsync(PropertiesFile.HOST + "Feedback/Put/", new StringContent(
-                    new JavaScriptSerializer().Serialize(feedbackEntity), Encoding.UTF8, "application/json")).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                    return feedbackEntity;
-            }
-            return null;
+            var fbEntity = GRestfulApi<FeedbackEntity>.Put(PropertiesFile.HOST + "Feedback/Put/", feedbackEntity);
+            return fbEntity;
         }
         public string Delete(int id)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Feedback/Delete/" + id);
-                var responseTask = client.DeleteAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return result.Content.ReadAsStringAsync().Result; 
-                }
-
-                return null;
-            }
-            return null;
+            var fbEntity = GRestfulApi<FeedbackEntity>.Delete(PropertiesFile.HOST + "Feedback/Delete/" + id);
+            return fbEntity;
+           
         }
         public FeedbackEntity GetDetail(int id)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(PropertiesFile.HOST + "Feedback/GetDetail/" + id);
-
-                var responseTask = client.GetAsync(client.BaseAddress);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject<FeedbackEntity>(result.Content.ReadAsStringAsync().Result);
-                }
-                return null;
-            }
+            var fbEntity = GRestfulApi<FeedbackEntity>.Get(PropertiesFile.HOST + "Feedback/GetDetail/" + id);
+            return fbEntity;
         }
        
     }

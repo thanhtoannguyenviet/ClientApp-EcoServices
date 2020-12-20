@@ -22,9 +22,9 @@ namespace ClientApp.Common
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Add("username","admin1");
+                    client.DefaultRequestHeaders.Add("username","admin123");
 
-                    client.DefaultRequestHeaders.Add("password", "admin1");
+                    client.DefaultRequestHeaders.Add("password", "admin123");
                     var response = client.PostAsync("http://localhost:8080/Server/login", new StringContent(
                         new JavaScriptSerializer().Serialize(""), Encoding.UTF8, "application/json")).Result;
                     if (response.StatusCode == HttpStatusCode.OK)

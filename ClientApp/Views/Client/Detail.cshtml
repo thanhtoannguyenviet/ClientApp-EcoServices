@@ -1,0 +1,89 @@
+﻿@model ClientApp.Models.ClientEntity
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>ClientEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.privatekey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.privatekey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            
+            @Html.ActionLink("Delete", "Delete", new { id = Model.idClient}) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

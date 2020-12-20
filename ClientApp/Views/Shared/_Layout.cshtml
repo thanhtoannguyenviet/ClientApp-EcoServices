@@ -18,17 +18,18 @@
         <a class="nav__link" href="#">Home</a>
     </li>
     <li class="nav__content">
-        <a class="nav__link" href="#">Home</a>
+        <a class="nav__link" href="#">About</a>
     </li>
     <li class="nav__content">
-        <a class="nav__link" href="#">Home</a>
+        <a class="nav__link" href="/Home/Login/">Login</a>
     </li>
-    <form class="form-inline">
-        @Html.ActionLink("Login", "Login", "Home")
-
-    </form>
     </ul>
-</nav>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -39,6 +40,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/MainStyle")
     @RenderSection("scripts", required: false)
 </body>
 </html>

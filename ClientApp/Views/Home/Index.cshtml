@@ -1,34 +1,38 @@
 ﻿@model IEnumerable<ClientApp.Models.DTO.ServiceDTO>
-
-<div class="jumbotron">
-    <h1 class="display-4">Chào các bạn đã sử dụng dịch vụ của chúng tôi</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
-@foreach(var item in Model)
-{
-<div class="card row">
-    <div class="card-body">
-        @if(@item.imgEntity!= null){
-        <img src="@item.imgEntity.link" class="card-img-top" alt="...">} 
-        <h5 class="card-title">@item.serviceEntity.nameservice</h5>
-        <p class="card-text">@item.serviceEntity.description</p>
-        <a href="#" class="card-link">Xem thêm</a>
-        <div class="row">
+<div class="body">
+    <div class="jumbotron">
+        <h1 class="display-4">Chào các bạn đã sử dụng dịch vụ của chúng tôi</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="card row">
+            <div class="card-body">
+                @if (@item.imgEntity != null)
+                {
+                    <img src="@item.imgEntity.link" class="card-img" alt="...">}
+            <div class="card-info">
+                <h1 class="card-title">@item.serviceEntity.nameservice</h1>
+                <p class="card-text"><span class="card-title">Mô tả</span>@item.serviceEntity.description</p>
+                <a href="#" class="card-link">Xem thêm</a>
+            </div>
+                @* <div class="row">
             @foreach (var i in item.companyServiceEntity)
             {
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">@i.nameCos</h5>
                         <p class="card-text">@i.price</p>
-                        @Html.ActionLink("Chi tiết", "CompanyServiceDetail", "Home", new {id = i.idCs}, null)
+                        @Html.ActionLink("Chi tiết", "CompanyServiceDetail", "Home", new { id = i.idCs }, null)
                         <a href="#" class="btn btn-primary">Xem chi tiết</a>
                     </div>
                 </div>
             }
+        </div>*@
+            </div>
         </div>
-    </div>
+    }
 </div>
-}

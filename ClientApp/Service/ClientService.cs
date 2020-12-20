@@ -30,10 +30,10 @@ namespace ClientApp.Service
             var clientEntity = GRestfulApi<string>.Delete(PropertiesFile.HOST + "Client/Delete/");
             return clientEntity;
         }
-        public List<ClientDTO> GetDetail(int idRole)
+        public ClientEntity GetDetail(int idRole)
         {
-            var lsClientDtos = GRestfulApi<List<ClientDTO>>.Get(PropertiesFile.HOST + "Client/GetDetail/" + idRole);
-            return lsClientDtos;
+            var clientEntity = GRestfulApi<ClientEntity>.Get(PropertiesFile.HOST + "GetDetail/" + idRole);
+            return clientEntity;
         }
         public List<ClientDTO> GetAllDetail(int idRole)
         {

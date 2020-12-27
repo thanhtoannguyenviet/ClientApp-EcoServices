@@ -160,6 +160,7 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\CompanyService.cs" />
     <Compile Include="Service\FeedBackService.cs" />
+    <Compile Include="Service\ImageService.cs" />
     <Compile Include="Service\JobService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PaypalConfig.cs" />

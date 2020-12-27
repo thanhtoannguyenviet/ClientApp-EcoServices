@@ -10,14 +10,14 @@ namespace ClientApp.Service
 {
     public class ImageService
     {
-        public ImgEntity Post(ImgEntity cl)
+        public ImgEntity Post(ImgEntity imgE)
         {
-            var img = GRestfulApi<ImgEntity>.Post(PropertiesFile.HOST + "Image/Post/", cl);
+            var img = GRestfulApi<ImgEntity>.Post(PropertiesFile.HOST + "Image/Post/", imgE);
             return img;
         }
-        public ImgEntity Put(ClientEntity cl)
+        public ImgEntity Put(ImgEntity imgE)
         {
-            var img = GRestfulApi<ImgEntity>.Post(PropertiesFile.HOST + "Image/Put/", cl);
+            var img = GRestfulApi<ImgEntity>.Post(PropertiesFile.HOST + "Image/Put/", imgE);
             return img;
         }
         public string Delete(int id)

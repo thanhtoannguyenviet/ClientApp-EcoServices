@@ -7,48 +7,19 @@
 <div>
     <h4>CompanyService</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nameCos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nameCos)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.unit)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.unit)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-    </dl>
+    <h3>Tên dịch vụ: </h3><span>@Model.nameCos</span>
+    <h3>Đơn giá: </h3><span>@Model.price</span><span> @Model.unit</span>
+    <h3>Mô tả:</h3>
+    <p>@Model.description</p>
 </div>
-
+<div>
 
     <h2>AddToCart</h2>
     <h3>From:</h3>
     <input type="date" id="from" />
 
     <h3>To:</h3>
-    <input type="date" id="to"/>
+    <input type="date" id="to" />
     <h3>
         <input type="checkbox" value="T2" name="T2" id="T2" />
         <label for="T2">Thứ 2</label>
@@ -65,12 +36,15 @@
         <input type="checkbox" value="CN" id="CN" />
         <label for="CN">Chủ nhật</label>
     </h3>
-<h4 class="total"> Total:<span id="sTotal"></span></h4>
-<button >Đặt hàng</button>
+    <h4 class="total"> Total:<span id="sTotal"></span></h4>
+    <button>Đặt hàng</button>
+
+</div>
+
 <script>
     function calTotal() {
         var sum = 0;
-        var dateInput = new Date(document.getElementById("from").value); 
+        var dateInput = new Date(document.getElementById("from").value);
         var dateOutput = new Date(document.getElementById("to").value);
         var price = @Model.price;
         while (dateInput < dateOutput) {

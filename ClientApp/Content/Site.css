@@ -3,10 +3,13 @@
     padding: 0px;
     box-sizing: border-box;
 }
-
+.row {
+    display: flex;
+    padding: 15px;
+}
 /*** NAV***/
 .nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     display: flex;
     width: 100%;
@@ -16,6 +19,7 @@
     transition: all 0.5s;
     transition-timing-function: ease-in;
     background-color: white;
+    border-bottom: black solid 2px;
 }
 
 .nav__logo {
@@ -38,6 +42,7 @@
     display: flex;
     justify-content: space-around;
     width: 30%;
+    
 }
 
 .nav__link {
@@ -46,6 +51,7 @@
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 14px;
+    line-height: 40px;
 }
 .burger {
     display: none;
@@ -114,14 +120,15 @@
 }
 /**CARD**/
 .card {
-    /*height: 90vh;*/
-    width: 80vw;
-    background-color: #5fdffc;
+    background-color: gainsboro;
     border-radius: 25px;
+    margin: 10px;
+    width: 75%;
 }
 
-.card-img, .card-body, card-info {
-    width: 50%
+.card-img {
+    width: 200px;
+    height: 200px;
 }
 .card-info {
     display: flex;
@@ -141,4 +148,73 @@
 .body {
     align-items: center;
     justify-content: center;
+}
+
+
+/*** PRICETABLE***/
+.pricing-row {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 10px;
+}
+.pricing-table {
+    margin: 0 10px;
+    max-height: 300px;
+    object-fit: contain;
+    margin-right: 10px;
+    transition: transform 300ms;
+}
+.pricing-table:hover {
+    transform: scale(1.2);
+    background-color: white;
+}
+.pricing-table::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+.pricing-table > div {
+    display: block;
+    float: left;
+    width: 250px;
+    min-height: 5px;
+}
+.pricing-table > div ::not(:last-child) {
+    margin-right: 2%;
+}
+.pricing-block {
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.pricing-header {
+    height: auto;
+    padding: 30px 20px 40px;
+}
+.pricing-heading {
+    height: 70px;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.pricing-price {
+    color: #777;
+}
+.pricing-price > span {
+    display: inline-block
+}
+pricing__currency {
+    margin-top: 8px;
+    vertical-align: top;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.6;
+}
+.pricing-button {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
 }

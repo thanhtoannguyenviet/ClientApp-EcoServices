@@ -118,9 +118,12 @@ namespace ClientApp.Controllers
             return View(cl);
         }
 
-        public ActionResult AddToCart(CompanyServiceEntity cs)
+        public ActionResult AddToCart(int id)
         {
-            return View(cs);
+
+            var companyService = new Service.CompanyService();
+            var coms = companyService.GetDetail(id);
+            return View(coms);
         }
 
     }

@@ -84,14 +84,14 @@ namespace ClientApp.Controllers
         {
             var cliS = new ClientService();
             var client_ = cliS.GetDetail(id);
-            return View(client_);
+            return View(client_.clientEntity);
         }
         public ActionResult Edit(int id)
         {
 
             var cliS = new ClientService();
             var client_ = cliS.GetDetail(id);
-            return View(client_);
+            return View(client_.clientEntity);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -9,29 +9,36 @@
     </div>
     @foreach (var item in Model)
     {
-        <div class="card row">
-            <div class="card-body">
-                @if (@item.imgEntity != null)
-                {
-                    <img src="@item.imgEntity.link" class="card-img" alt="...">}
-            <div class="card-info">
+        <div class="card ">
+            <div class="card-body row">
+                <div class="card-img">
+                    @if (@item.imgEntity != null)
+                    {
+                        <img src="@item.imgEntity.link" class="card-img" alt="...">
+                    }
+                </div>
+                <div class="card-info">
                 <h1 class="card-title">@item.serviceEntity.nameservice</h1>
                 <p class="card-text"><span class="card-title">Mô tả</span>@item.serviceEntity.description</p>
-                <a href="#" class="card-link">Xem thêm</a>
-            </div>
-                @* <div class="row">
-            @foreach (var i in item.companyServiceEntity)
-            {
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@i.nameCos</h5>
-                        <p class="card-text">@i.price</p>
-                        @Html.ActionLink("Chi tiết", "CompanyServiceDetail", "Home", new { id = i.idCs }, null)
-                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                    </div>
+                    <a href="#" class="card-link">Xem thêm</a>
                 </div>
-            }
-        </div>*@
+            </div>
+            <div class="pricing-row">
+                @foreach (var i in item.companyServiceEntity)
+                {
+                    <div class="pricing-table">
+                        <div class="pricing-block">
+                            <div class="pricing-header">
+                                <div class="pricing-heading">@i.nameCos</div>
+                                <div class="pricing-price">
+                                    <span class="pricing__money">@i.price</span>
+                                    <span class="pricing__currency">@i.unit</span>
+                                </div>
+                            </div>
+                            @Html.ActionLink("Chọn mua", "AddToCart", new {id = @i.idCs},new {@class = "pricing-button" })
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     }

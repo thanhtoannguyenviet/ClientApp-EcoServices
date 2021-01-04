@@ -9,9 +9,14 @@ namespace ClientApp.Models
     {
         public long idDetailOder{get;set; }
         public long idOrder { get; set; }
-        public long price { get; set; }
+        public double price { get; set; }
         public String weekly { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
+        public string address { get; set; }
+
+        public string email { get; set; }
+
+        public string phone { get; set; }
     }
 }

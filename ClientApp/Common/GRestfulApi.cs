@@ -23,9 +23,10 @@ namespace ClientApp.Common
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Add("username","admin123");
-
-                    client.DefaultRequestHeaders.Add("password", "admin123");
-                    var response = client.PostAsync("http://115.73.214.162:7777/Server/login", new StringContent(
+                //http://localhost:8080
+                client.DefaultRequestHeaders.Add("password", "admin1");
+             
+                var response = client.PostAsync("http://115.73.214.162:7777/Server/login", new StringContent(
                         new JavaScriptSerializer().Serialize(""), Encoding.UTF8, "application/json")).Result;
                     if (response.StatusCode == HttpStatusCode.OK)
                     {

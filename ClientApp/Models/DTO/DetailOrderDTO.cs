@@ -7,7 +7,8 @@ namespace ClientApp.Models.DTO
 {
     public class DetailOrderDTO
     {
-        DetailOrderEntity detailOrder { get;set;}
-        OrderEntity order { get;set;}
+        public DetailOrderEntity detailOrder { get; set; }
+        public CompanyServiceEntity companyService { get;set;}
+        public double amountPrice { get; set; }
     }
 }

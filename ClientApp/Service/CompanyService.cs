@@ -41,5 +41,11 @@ namespace ClientApp.Service
             var companyService = GRestfulApi<CompanyServiceEntity>.Get(PropertiesFile.HOST + "CompanyService/GetDetail/" + id);
             return companyService;
         }
+        public List<CompanyServiceEntity> GetAllByIdCompany(int page)
+        {
+            var lsCompanyServiceEntity = GRestfulApi<List<CompanyServiceEntity>>.Get(PropertiesFile.HOST + "CompanyService/GetListByIdCompany/" + page);
+            return lsCompanyServiceEntity;
+
+        }
     }
 }

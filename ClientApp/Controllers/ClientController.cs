@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ClientApp.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         // GET: Client
@@ -16,6 +17,7 @@ namespace ClientApp.Controllers
             var clientService = new ClientService();
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult getClientByRole_Admin()
         {
             var clientService = new ClientService();
@@ -27,6 +29,7 @@ namespace ClientApp.Controllers
             }
             return PartialView(lsClient);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult getClientByRole_Staff()
         {
             var clientService = new ClientService();

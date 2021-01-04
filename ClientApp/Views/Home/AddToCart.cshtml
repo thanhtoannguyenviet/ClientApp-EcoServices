@@ -1,69 +1,114 @@
-﻿@model ClientApp.Models.CompanyServiceEntity
+﻿@model ClientApp.Models.DTO.OrderDTO
 @{
     ViewBag.Title = "AddToCart";
 }
-<h2>Chi tiết dịch vụ</h2>
 
-<div>
-    <h4>CompanyService</h4>
-    <hr />
-    <h3>Tên dịch vụ: </h3><span>@Model.nameCos</span>
-    <h3>Đơn giá: </h3><span>@Model.price</span><span> @Model.unit</span>
+<form action="../Buy" method="post" class="orderform" onsubmit="calTotal()">
+    <h2 class="orderform-title">Chi tiết dịch vụ</h2>
+    <p>Tên dịch vụ: <span class="orderform-title">@Model.companyService.nameCos</span></p>
+    <p>Đơn giá: <span class="orderform-price">@Model.companyService.price</span><span> @Model.companyService.unit</span></p>
     <h3>Mô tả:</h3>
-    <p>@Model.description</p>
-</div>
-<div>
+    <p>@Model.companyService.description</p>
+    <h2 class="orderform-title">Chi tiết đơn hàng</h2>
+    <input type="hidden" name="weekly" id="weekly" value="" />
 
-    <h2>AddToCart</h2>
-    <h3>From:</h3>
-    <input type="date" id="from" />
+    <input type="hidden" name="total" id="total" value="" />
+    <input type="hidden" name="idCs" id="idCs" value="@Model.companyService.idCs" />
+    <div class="orderform-group">
+        <label class="orderform-label" for="email"> Email:</label>
+        <input type="email" id="email" name="email" />
+    </div>
+    <div class="orderform-group">
+        <label class="orderform-label" for="phone"> Phone:</label>
+        <input type="tel" id="phone" name="phone" />
+    </div>
+    <div class="orderform-group">
+        <label class="orderform-label"> address:</label>
+        <input type="text" id="address" name="address" />
+    </div>
+    <div class="orderform-group">
+        <label for="from" class="orderform-label">From:</label>
+        <input type="date" id="from" name="from" required />
+        <label for="to" class="orderform-label">To:</label>
+        <input type="date" id="to" name="to" required />
+    </div>
+    <div class="orderform-tabchoose">
+        <div class="orderform-choose">
+            <input type="checkbox" value="T2" name="T2" id="T2" />
+            <label for="T2">Thứ 2</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="T3" id="T3" />
+            <label for="T3">Thứ 3</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="T4" id="T4" />
+            <label for="T4">Thứ 4</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="T5" id="T5" />
+            <label for="T5">Thứ 5</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="T6" id="T6" />
+            <label for="T6">Thứ 6</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="T7" id="T7" />
+            <label for="T7">Thứ 7</label>
+        </div>
+        <div class="orderform-choose">
+            <input type="checkbox" value="CN" id="CN" />
+            <label for="CN">Chủ nhật</label>
+        </div>
+    </div>
+    <h4 class="orderform-total"> Total:<span id="sTotal" name="sTotal">15000</span></h4>
+    <button class="orderform-button">Đặt hàng</button>
 
-    <h3>To:</h3>
-    <input type="date" id="to" />
-    <h3>
-        <input type="checkbox" value="T2" name="T2" id="T2" />
-        <label for="T2">Thứ 2</label>
-        <input type="checkbox" value="T3" id="T3" />
-        <label for="T3">Thứ 3</label>
-        <input type="checkbox" value="T4" id="T4" />
-        <label for="T4">Thứ 4</label>
-        <input type="checkbox" value="T5" id="T5" />
-        <label for="T5">Thứ 5</label>
-        <input type="checkbox" value="T6" id="T6" />
-        <label for="T6">Thứ 6</label>
-        <input type="checkbox" value="T7" id="T7" />
-        <label for="T7">Thứ 7</label>
-        <input type="checkbox" value="CN" id="CN" />
-        <label for="CN">Chủ nhật</label>
-    </h3>
-    <h4 class="total"> Total:<span id="sTotal"></span></h4>
-    <button>Đặt hàng</button>
 
-</div>
-
-<script>
+    <script>
     function calTotal() {
         var sum = 0;
         var dateInput = new Date(document.getElementById("from").value);
         var dateOutput = new Date(document.getElementById("to").value);
-        var price = @Model.price;
+        var price = @Model.companyService.price;
+        var str = ""
         while (dateInput < dateOutput) {
-            if (document.getElementById("T2").checked == true && dateInput.getDay() == 1)
+            if (document.getElementById("T2").checked == true && dateInput.getDay() == 1) {
                 sum += price;
-            if (document.getElementById("T3").checked == true && dateInput.getDay() == 2)
+                str += "T2,";
+            }
+
+            if (document.getElementById("T3").checked == true && dateInput.getDay() == 2) {
                 sum += price;
-            if (document.getElementById("T4").checked == true && dateInput.getDay() == 3)
+                str += "T3,";
+            }
+
+            if (document.getElementById("T4").checked == true && dateInput.getDay() == 3) {
                 sum += price;
-            if (document.getElementById("T5").checked == true && dateInput.getDay() == 4)
+                str += "T4,";
+            }
+
+            if (document.getElementById("T5").checked == true && dateInput.getDay() == 4){
                 sum += price;
-            if (document.getElementById("T6").checked == true && dateInput.getDay() == 5)
+                str += "T5,";
+            }
+            if (document.getElementById("T6").checked == true && dateInput.getDay() == 5) {
                 sum += price;
-            if (document.getElementById("T7").checked == true && dateInput.getDay() == 6)
+                str += "T6,";
+            }
+            if (document.getElementById("T7").checked == true && dateInput.getDay() == 6) {
                 sum += price;
-            if (document.getElementById("CN").checked == true && dateInput.getDay() == 0)
+                str += "T7,";
+            }
+            if (document.getElementById("CN").checked == true && dateInput.getDay() == 0) {
                 sum += price;
-            dateInput.setDate(dateInput.getDate()+1);
+                str += "CN";
+            }
+                dateInput.setDate(dateInput.getDate()+1);
         }
+        document.getElementById("weekly").value = str;
+        document.getElementById("total").value = sum;
         return sum;
     }
     var checkbox = document.querySelectorAll("input[type=checkbox]");
@@ -74,4 +119,5 @@
                 document.getElementById("sTotal").innerHTML = calTotal().toString();
             });
     });
-</script>
+    </script>
+</form>

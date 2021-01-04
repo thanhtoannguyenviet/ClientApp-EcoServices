@@ -17,13 +17,13 @@ public static class PayPalConfiguration
     // Create the configuration map that contains mode and other optional configuration details.
     public static Dictionary<string, string> GetConfig()
     {
-        var config = new Dictionary<string, string>();
-        config.Add("mode", "sandbox");
-        config.Add("connectionTimeout", "360000");
-        config.Add("requestRetries", "1");
-        config.Add("clientId", "AXqEeQflkTgo7erdKlnnizY1bx3TY1ds46D9OJFKNhap9ReFF2mWnWA_4gqRbX3bXTwYPu8gYon3e02P");
-        config.Add("clientSecret", "EO-TNSIC_HeHo8iNW5t6jAqjy83ZinTmuTRppPXfc8mrIJrKZykOvWXiSgh-i0-O2fRNcEtuYWDDWqpr");
-        return config;
+           var config = new Dictionary<string, string>();
+            config.Add("mode", "sandbox");
+            config.Add("connectionTimeout", "360000");
+            config.Add("requestRetries", "1");
+            config.Add("clientId", "AXqEeQflkTgo7erdKlnnizY1bx3TY1ds46D9OJFKNhap9ReFF2mWnWA_4gqRbX3bXTwYPu8gYon3e02P");
+            config.Add("clientSecret", "EOHznLvGck1lG8-c_9jGxene2TiEFqr8GUcTP1-OaZVZYZXOA4mZxUE_SLMOdZe2VM3G14VQh4rWiq5-");
+            return config;
     }
 
 

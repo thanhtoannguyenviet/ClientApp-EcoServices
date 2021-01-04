@@ -17,5 +17,13 @@ namespace ClientApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_EndRequest()
+        {
+            var context = new HttpContextWrapper(Context);
+            if (context.Response.StatusCode == 401)
+            {
+                context.Response.Redirect("~/Home/Error404");
+            }
+        }
     }
 }

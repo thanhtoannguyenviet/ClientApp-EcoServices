@@ -49,7 +49,7 @@ namespace ClientApp.Service
         }
         public ClientDTO GetClient(String username, String password)
         {
-            var client = new ClientDTO {clientEntity = {username = username, password = password}};
+            var client = new ClientDTO { clientEntity = new ClientEntity(){ username = username, password = password }, roleEntity = new RoleEntity(), imgEntity = new ImgEntity() };
             var clientDto =
                 GRestfulApi<ClientDTO>.Post(PropertiesFile.HOST + "Client/Login/", client);
             return clientDto;

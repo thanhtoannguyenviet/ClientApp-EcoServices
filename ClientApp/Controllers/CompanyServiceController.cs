@@ -14,11 +14,11 @@ namespace ClientApp.Controllers
         public ActionResult Index()
         {
             var companySer = new CompanyService();
-            var ls = companySer.GetAllByClient(0);
+            var ls = companySer.GetAllByIdCompany(1);
             List<CompanyServiceEntity> list = new List<CompanyServiceEntity>();
             foreach (var item in ls)
             {
-                list.Add(item);
+                list.Add(item.companyServiceEntity);
             }
             return View(list);
         }

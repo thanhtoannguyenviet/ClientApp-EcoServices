@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 using ClientApp.Models;
+using ClientApp.Models.DTO;
 
 namespace ClientApp.Service
 {
@@ -41,9 +42,9 @@ namespace ClientApp.Service
             var companyService = GRestfulApi<CompanyServiceEntity>.Get(PropertiesFile.HOST + "CompanyService/GetDetail/" + id);
             return companyService;
         }
-        public List<CompanyServiceEntity> GetAllByIdCompany(int page)
+        public List<CompanyServiceDTO> GetAllByIdCompany(int id)
         {
-            var lsCompanyServiceEntity = GRestfulApi<List<CompanyServiceEntity>>.Get(PropertiesFile.HOST + "CompanyService/GetListByIdCompany/" + page);
+            var lsCompanyServiceEntity = GRestfulApi<List<CompanyServiceDTO>>.Get(PropertiesFile.HOST + "CompanyService/GetListByIdCompany/" + id);
             return lsCompanyServiceEntity;
 
         }

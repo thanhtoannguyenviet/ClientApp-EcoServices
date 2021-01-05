@@ -8,6 +8,6 @@ namespace ClientApp.Models.DTO
     public class CompanyServiceDTO
     {
         public CompanyServiceEntity companyServiceEntity { get; set; }
-        public List<OrderEntity> orderDTOList { get; set; }
+        public List<OrderEntity> orderEntities { get; set; }
     }
 }

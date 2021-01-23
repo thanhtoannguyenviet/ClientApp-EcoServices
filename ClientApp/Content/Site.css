@@ -81,7 +81,7 @@
         /* height: 92vh;*/
         width: 50%;
         top: 8vh;
-        background-color: red;
+        background-color: gainsboro;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -118,15 +118,19 @@
 }
 /**CARD**/
 .card {
-    background-color: gainsboro;
-    border-radius: 25px;
     margin: 10px;
-    width: 75%;
+    width: 98%;
+    background: rgba( 255, 255, 255, 0.30 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
 }
 
 .card-img {
     width: 200px;
     height: 200px;
+    border-radius: 50%;
 }
 .card-info {
     display: flex;
@@ -137,15 +141,20 @@
 .card-header, .card-title {
     text-transform: uppercase;
     font-weight: bold;
-    color:white
+    color: black;
+}
+.card-text {
+    padding: 10px;
 }
 .card-link {
-    background-color: white;
-
-}
-.body {
-    align-items: center;
-    justify-content: center;
+    background-color: #39b7dd;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none
 }
 
 
@@ -219,11 +228,17 @@ pricing__currency {
 /*** Order Form***/
 .orderform {
     width: 80%;
+    margin: auto;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    padding: 15px;
 }
 .orderform-title {
     text-transform: uppercase;
     font-weight: bold;
-    text-align: center
 }
 .orderform-price {
     font-size: 30px;
@@ -238,7 +253,7 @@ pricing__currency {
 .orderform-total {
     text-transform: uppercase;
     font-size: 30px;
-    color:red
+    float: right
 }
 .orderform-button {
     display: block;
@@ -255,18 +270,22 @@ pricing__currency {
 }
 
 .login {
-    position: absolute;
-    width: 100%;
-left: 25%
+    width: 75%;
+    margin: auto;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 5px;
+    padding: 30px;
+    display: flex;
+}
+.login-text {
+    color: white;
+    text-align: center
 }
 .login-block {
     max-width: 550px;
     min-height: 400px;
-    background-color: rgba(0,0,0,0.8);
-    padding: 30px;
-    border-radius: 5px;
-    display: flex;
-    float: left
+    float: left;
+    padding: 30px
 }
 .input-group {
    
@@ -278,6 +297,7 @@ left: 25%
     border: 0px;
     border-bottom: 2px solid #c5ecfd;
     width: 100%;
+    padding: 5px;
 }
 .input-field::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: white;
@@ -295,6 +315,7 @@ left: 25%
     }
 input[type="text"], input[type="password"], textarea, select {
     outline: none;
+    
 }
 .btn {
     background-color: #39b7dd;
@@ -303,6 +324,11 @@ input[type="text"], input[type="password"], textarea, select {
     border-radius: 10px;
     color: white;
     cursor: pointer;
-    width: 100%
+    width: 100%;
+    margin: 30px 0;
+}
 
+
+.body-content {
+    background-color: rgb(238, 240, 243);
 }

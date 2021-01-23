@@ -13,76 +13,32 @@
 <div class="row">
     <div class="login">
         <form action="/Home/Login/" method="post" class="login-block">
+            
             <div class="input-group">
-                <input type="text" name="username" placeholder="Username:" class="input-field" />
-                <input type="password" name="password" placeholder="Password:" class="input-field" />
-                <button type="submit" class="btn"> Đăng nhập</button>
-            </div>
-           
-        </form>
-        <form action="/Home/Register/" method="post" class="login-block">
-            <div class="input-group">
-                <input type="text" name="username" placeholder="Username:" class="input-field" />
-                <input type="password" name="password" placeholder="Password:" class="input-field" />
-                <input type="text" name="username" placeholder="Username:" class="input-field" />
-                <input type="password" name="password" placeholder="Password:" class="input-field" />
+                <h1 class="login-text">
+                    Login
+                </h1>
                 <input type="text" name="username" placeholder="Username:" class="input-field"/>
                 <input type="password" name="password" placeholder="Password:" class="input-field"/>
+                <button type="submit" class="btn"> Đăng nhập</button>
+            </div>
+
+        </form>
+        <form action="/Home/Register/" method="post" class="login-block">
+            
+            <div class="input-group">
+                <h1 class="login-text">
+                    Register
+                </h1>
+                <input type="text" name="username" placeholder="Username:" class="input-field"/>
+                <input type="password" name="password" placeholder="Password:" class="input-field"/>
+                <input type="text" name="fullname" placeholder="Fullname:" class="input-field"/>
+                <input type="email" name="email" placeholder="Email:" class="input-field"/>
+                <input type="tel" name="phone" placeholder="Phone:" class="input-field"/>
+                <input type="text" name="address" placeholder="Address:" class="input-field"/>
+                <input type="checkbox" class="chech-box"><span>I agree to the teems & conditions</span>
+                <button type="submit" class="btn btn-primary">Registe</button>
             </div>
         </form>
     </div>
-    <div class="col">
-        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fullname)
-            <div class="col-sm-10">
-                @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "input-field", @placeholder = "First Name" } })
-                @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
-            </div>
-        </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.email)
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input-field", @placeholder = "Email" } })
-                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.username)
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-field", @placeholder = "Username" } })
-                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.password)
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "input-field", @placeholder = "Password" } })
-                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label></label>
-                        <div class="col-sm-10">
-                            <input type="password" class="input-field" placeholder="Confilm Password" id="confilmpassword" />
-                            </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.phone)
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "input-field", @placeholder = "Phone Number" } })
-                            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                                <div class="form-group">
-                                    <input type="checkbox" class="chech-box"><span>I agree to the teems & conditions</span>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Registe</button>
-                                </div>
-                                }
-                            </div>
-        </div>
+</div>

@@ -32,5 +32,7 @@ namespace ClientApp.Models
         public int? actived { get; set; }
 
         public int? role { get; set; }
+
+        public string address { get; set; }
     }
 }

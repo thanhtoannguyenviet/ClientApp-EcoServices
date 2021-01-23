@@ -22,9 +22,8 @@ namespace ClientApp.Common
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Add("username","admin123");
-                //http://localhost:8080
-                client.DefaultRequestHeaders.Add("password", "admin1");
+                    client.DefaultRequestHeaders.Add("username", "admin123");
+                    client.DefaultRequestHeaders.Add("password", "admin1");
              
                 var response = client.PostAsync("http://115.73.214.162:7777/Server/login", new StringContent(
                         new JavaScriptSerializer().Serialize(""), Encoding.UTF8, "application/json")).Result;
@@ -50,7 +49,10 @@ namespace ClientApp.Common
                 var response = client.PostAsync(url, new StringContent(
                     new JavaScriptSerializer().Serialize(t), Encoding.UTF8, "application/json")).Result;
                 if (response.StatusCode == HttpStatusCode.OK)
-                    return t;
+                {
+                    var rs = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                    return rs;
+                }
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     SetHeader();
@@ -67,7 +69,10 @@ namespace ClientApp.Common
                 var response = client.PutAsync(url, new StringContent(
                     new JavaScriptSerializer().Serialize(t), Encoding.UTF8, "application/json")).Result;
                 if (response.StatusCode == HttpStatusCode.OK)
-                    return t;
+                {
+                    var rs = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                    return rs;
+                }
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     SetHeader();

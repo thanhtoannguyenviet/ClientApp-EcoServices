@@ -17,18 +17,18 @@ namespace ClientApp.Service
     {
         public OrderEntity Post(OrderEntity or)
         {
-            var orEntity = GRestfulApi<OrderEntity>.Post(PropertiesFile.HOST + "Feedback/Post/",or);
+            var orEntity = GRestfulApi<OrderEntity>.Post(PropertiesFile.HOST + "Order/Post/",or);
             return orEntity;
            
         }
         public OrderEntity Put(OrderEntity or)
         {
-            var orEntity = GRestfulApi<OrderEntity>.Put(PropertiesFile.HOST + "Feedback/Put/", or);
+            var orEntity = GRestfulApi<OrderEntity>.Put(PropertiesFile.HOST + "Order/Put/", or);
             return orEntity;
         }
         public string Delete(int id)
         {
-            var del = GRestfulApi<OrderEntity>.Delete(PropertiesFile.HOST + "Feedback/Delete/"+id);
+            var del = GRestfulApi<OrderEntity>.Delete(PropertiesFile.HOST + "Order/Delete/" + id);
             return del;
         }
         public OrderEntity GetDetail(int id)

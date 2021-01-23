@@ -129,6 +129,7 @@ namespace ClientApp.Controllers
                 detailOrderEntity = new DetailOrderEntity(),
                 order = new OrderEntity()
             };
+            ViewBag.idCs = coms.idCs;
             return View(order);
         }
 
@@ -140,7 +141,7 @@ namespace ClientApp.Controllers
 
         public ActionResult Buy(OrderDTO d)
         {
-           // var accountCustomer = JsonConvert.DeserializeObject<ClientEntity>(Request.Cookies["Account"]?.Value);
+            //var accountCustomer = JsonConvert.DeserializeObject<ClientEntity>(Request.Cookies["Account"]?.Value);
            var price =Convert.ToDouble(Request["total"]);
            var weekly = Request["weekly"];
            var start = Convert.ToDateTime(Request["from"]);
@@ -187,21 +188,23 @@ namespace ClientApp.Controllers
                     }
                 }
                 TempData[guid] = createdPayment.id;
-                //return Redirect(paypalRedirectUrl);
-                return Json("OK");
+                return Redirect(paypalRedirectUrl);
+                
             }
             else
             {
                 var guid = Request.Params["guid"];
                 var executedPayment = PaypalService.ExecutePayment(apiContext, payerId, TempData[guid] as string);
-                var cus = "admin1";
+                var cus = email;
                     //accountCustomer.fullname;
                 var pay = new OrderEntity()
                 {
                     idTradeCode = executedPayment.id,
                     idCustomer = 2,
                                  //accountCustomer.idClient,
-                    typeTradeCode = "PayPal"
+                    typeTradeCode = "PayPal",
+                    idCs = idCs,
+                    status = "Đã Thanh toán",
                 };
                 var companyService = new OrderService();
                 var comp = companyService.Post(pay);
@@ -222,8 +225,7 @@ namespace ClientApp.Controllers
                     Session.Remove("cart");
                     return JavaScript("Payment Error!");
                 }
-
-                return Index();
+                return RedirectToAction("Index");
             }
         }
     }

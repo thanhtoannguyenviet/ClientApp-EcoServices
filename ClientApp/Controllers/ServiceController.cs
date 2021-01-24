@@ -14,31 +14,36 @@ namespace ClientApp.Controllers
             public ActionResult Index()
             {
                 var companySer = new Service.CompanyService();
-                var list = companySer.GetAllByClient(0);
-                return View(list);
+                var list = companySer.GetAllByIdCompany(3); 
+                ViewBag.Company = new Models.DTO.CompanyServiceDTO();
+                ViewBag.Model = list.Where(a => a.companyServiceEntity.status == "0");
+
+            return View(list);
             }
             [HttpGet]
             public ActionResult UpdateStatus(int id)
             {
-                var companySer = new Service.CompanyService();
-                var update = companySer.GetDetail(id);
-                update.status = "1";
-                var updatestatus = companySer.UpdateStatus(update);
-                return RedirectToAction("Index", "Service");
+            var companySer = new CompanyService();
+            var compEn = new CompanyServiceEntity();
+            var update = companySer.GetAllByClient(0).Find(s => s.idCs == id);
+            update.status = "1";
+            var updateOrder = companySer.UpdateStatus(update);
+            return RedirectToAction("Index");
             }
-            public ActionResult getAllByAdmin()
+        public ActionResult getAllByAdmin()
             {
-                var jobService = new JobService();
-                var ls = jobService.GetAllByAdmin(0);
-                List<ServiceEntity> list = new List<ServiceEntity>();
-                foreach (var item in ls)
-                {
-                    list.Add(item);
-                }
-                return View(list);
+            var jobService = new JobService();
+            var ls = jobService.GetAllByAdmin(0);
+            List<ServiceEntity> list = new List<ServiceEntity>();
+            foreach (var item in ls)
+            {
+                list.Add(item);
             }
+            return View(list);
 
-            public ActionResult NewService()
+        }
+
+        public ActionResult NewService()
             {
                 return View();
             }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ClientApp.Models.CompanyServiceEntity>
+
+<div class="container">
+    <h1>Company Service</h1>
+    <div class="table-responsive" id="table">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Id Company</th>
+                    <th>Id Service</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Name Company Service</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+
+            </thead>
+            <tbody class="accordion" id="accordionExample">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.idCs</td>
+                        <td>@item.idCompany</td>
+                        <td>@item.idService</td>
+                        <td>@item.price</td>
+                        <td>@item.unit</td>
+                        <td>@item.description</td>
+                        <td>@item.status</td>
+                        <td>@item.nameCos</td>
+
+                        <td><a href="@Url.Action("Edit","Company_Service",new {id=item.idCs})" class="badge badge-warning">Modify</a></td>
+                        <td><a href="@Url.Action("Delete","Company_Service",new {id=item.idCs})" class="badge badge-danger">Remove</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

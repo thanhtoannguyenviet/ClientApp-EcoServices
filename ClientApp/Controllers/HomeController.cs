@@ -55,7 +55,7 @@ namespace ClientApp.Controllers
         {
             account.password = Common.CryptSecurity.Crypts.EnCrypt(account.password);
             ClientService clientServer = new ClientService();
-            var person = clientServer.GetClient(account.username,account.password);
+            var person = clientServer.GetClient(account.username, account.password);
             if (person != null)
             {
                 var customer = person.clientEntity;
@@ -65,15 +65,16 @@ namespace ClientApp.Controllers
                 FormsAuthentication.SetAuthCookie(Common.RoleSecurity.GetValue(customer.role), true);
                 return Redirect("/Customer/");
             }
-                //ViewBag.Error = "1";
-                //ModelState.AddModelError("", "Success Login");
-            
+            //ViewBag.Error = "1";
+            //ModelState.AddModelError("", "Success Login");
+
             //else
             //{
             //    ViewBag.Error = "1";
             //    ModelState.AddModelError("", "Invalid user and password");
             //}
             return View("Index");
+
         }
         [HttpPost]
         public ActionResult Register(ClientEntity client)

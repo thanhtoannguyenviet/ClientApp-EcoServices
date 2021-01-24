@@ -41,5 +41,22 @@ namespace ClientApp.Service
             var orderList = GRestfulApi<List<OrderDTO>>.Get(PropertiesFile.HOST + "Order/GetListClientByIdCs/" + id);
             return orderList;
         }
+        public OrderEntity GetDetail(long id)
+        {
+            var order = GRestfulApi<OrderEntity>.Get(PropertiesFile.HOST + "Order/GetDetail/" + id);
+            return order;
+        }
+        public List<OrderDTO> GetListOrdertByIdCs(long id)
+        {
+            var orderList = GRestfulApi<List<OrderDTO>>.Get(PropertiesFile.HOST + "Order/GetListClientByIdCs/" + id);
+            return orderList;
+        }
+        public OrderEntity UpdateStatus(OrderEntity order)
+        {
+            var updateorder = GRestfulApi<OrderEntity>.Post(PropertiesFile.HOST + "Order/UpdateStatus/" + order.idOrder + "/" + order.status, order);
+            return updateorder;
+        }
+
+
     }
 }

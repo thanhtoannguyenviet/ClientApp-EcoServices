@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ClientApp.Models;
+using ClientApp.Models.DTO;
 
 namespace ClientApp.Controllers
 {
@@ -13,15 +14,60 @@ namespace ClientApp.Controllers
         // GET: CompanyService
         public ActionResult Index()
         {
+            var orderS = new OrderService();
+            var ls = orderS.GetListOrdertByIdCs(3);
+            ViewBag.Order = new OrderDTO();
+            ViewBag.Model = ls.Where(a => a.order.status == null);
+            return View();
+
+        }
+        [HttpGet]
+        public ActionResult AcceptOrder(long id)
+        {
+            var orderSer = new OrderService();
+
+            var update = orderSer.GetListOrdertByIdCs(3).Find(s => s.order.idOrder == id);
+            update.order.status = "Chấp Thuận";
+            var updateOrder = orderSer.UpdateStatus(update.order);
+            string message = "Đơn hàng của bạn đã được xác nhận! Cảm ơn bạn đã tin tưởng chúng tôi!";
+            return Json(message, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction("Index");
+        }
+        public ActionResult getAllOrder()
+        {
+            var orderS = new OrderService();
+            var ls = orderS.GetListOrdertByIdCs(3);
+            List<OrderEntity> list = new List<OrderEntity>();
+            foreach (var item in ls)
+            {
+                list.Add(item.order);
+            }
+            return View(list);
+
+        }
+        [HttpGet]
+        public ActionResult DenyOrder(long id)
+        {
+            var orderSer = new OrderService();
+
+            var update = orderSer.GetListOrdertByIdCs(3).Find(s => s.order.idOrder == id);
+            update.order.status = "Từ chối";
+            var updateOrder = orderSer.UpdateStatus(update.order);
+            string result = "Hiện chúng tôi không thể phục vụ yêu cầu của bạn. Xin lỗi vì sự bất tiện này!";
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getAll()
+        {
             var companySer = new CompanyService();
-            var ls = companySer.GetAllByIdCompany(1);
+            var ls = companySer.GetAllByClient(0);
             List<CompanyServiceEntity> list = new List<CompanyServiceEntity>();
             foreach (var item in ls)
             {
-                list.Add(item.companyServiceEntity);
+                list.Add(item);
             }
             return View(list);
         }
+
         public ActionResult NewCompanyService()
         {
             return View();

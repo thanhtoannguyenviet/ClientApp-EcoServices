@@ -1,0 +1,59 @@
+﻿@model ClientApp.Models.CompanyServiceEntity
+
+@{
+    ViewBag.Title = "NewCompanyService";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="w3-section">
+        <form action="/CompanyService/NewCompanyService">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label for="id company">Id Company:</label>
+                        <input type="text" class="form-control" id="id company" placeholder="Enter id company" name="id company">
+                    </div>
+                    <div class="form-group">
+                        <label for="id service">Id Service:</label>
+                        <input type="text" class="form-control" id="id service" placeholder="Enter id service" name="id service">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit:</label>
+                        <input type="text" class="form-control" id="unit" placeholder="Enter unit" name="unit">
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" class="form-control" id="description" placeholder="Enter description" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <input type="number" class="form-control" id="status" placeholder="Enter status" name="status">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success" />
+                        @if (ViewBag.message != "")
+                        {
+                            <span class="badge badge-danger">@ViewBag.message</span>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+

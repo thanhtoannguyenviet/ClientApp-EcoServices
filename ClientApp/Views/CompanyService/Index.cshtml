@@ -1,0 +1,65 @@
+﻿@using ClientApp.Models.DTO
+@{
+    ViewBag.Order = new OrderDTO();
+    ViewBag.Title = Layout;
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+<div class="w3-section">
+
+    <div class="table-responsive" id="table">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Id Customer</th>
+                    <th>Id Company</th>
+                    <th>Id TradeCode</th>
+                    <th>Type TradeCode</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody class="accordion" id="accordionExample">
+                @foreach (var item in ViewBag.Model)
+                {
+                    <tr>
+                        <td>@item.orderEntity.idOrder</td>
+                        <td>@item.orderEntity.idCustomer</td>
+                        <td>@item.orderEntity.idCs</td>
+                        <td>@item.orderEntity.idTradeCode</td>
+                        <td>@item.orderEntity.typeTradeCode</td>
+                        @if (item.orderEntity.status == null)
+                        {
+                    <td>
+                        @Ajax.ActionLink("Accept Order", "AcceptOrder", "CompanyService", new { id = item.orderEntity.idOrder }, new AjaxOptions
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "Content"
+                      
+                   })
+
+                        @Ajax.ActionLink("Deny Order", "DenyOrder", "CompanyService", new { detail = item.orderEntity.idOrder }, new AjaxOptions
+                        {
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "Content"
+                         })
+                    </td>
+
+                        }
+                        else if (item.companyServiceEntity.status == "Chấp Thuận")
+                        {
+                            <td>
+                                <a href="#" class="disabled" tabindex="-1" role="button" aria-disabled="true">Chấp Thuận</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
+        @*</div>
+            <button class="btn btn-primary btn-test" name="test1" id="btn-test1">test</button>
+            <button class="btn btn-primary btn-test" name="test2" id="btn-test2">test</button>
+            <button class="btn btn-primary btn-test" name="test3" id="btn-test3">test</button>
+        </div>*@

@@ -1,50 +1,34 @@
 ﻿@model IEnumerable<ClientApp.Models.ServiceEntity>
 
 @{
-    ViewBag.Title = "getAllByAdmin";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    ViewBag.Title = Layout;
+
 }
 
-<div class="form-inline mt-2 mt-md-0">
- 
-    <a href="@Url.Action("NewService", "Service")" type="button" class="btn btn-primary"> <i class="fa fa-plus"></i> Add new</a>
+<div class="w3-section">
+    <div class="table-responsive" id="table">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th style="width:20%">Name</th>
+                <th>Description</th>
+                <th>Actived</th>
+                    
+            </tr>
+            </thead>
+            <tbody class="accordion" id="accordionExample">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.idService</td>
+                    <td>@item.nameservice</td>
+                    <td>@item.description</td>
+                    <td>@item.actived</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idService)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nameservice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.actived)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idService)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nameservice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.actived)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.idService }) |
-            @Html.ActionLink("Details", "Detail", new { id = item.idService }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idService })
-        </td>
-    </tr>
-}
-
-</table>
